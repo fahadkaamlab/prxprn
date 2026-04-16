@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1-Minute Timer</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      }
+
+      .timer {
+        background: rgba(0, 0, 0, 0.25);
+        padding: 2rem 2.5rem;
+        border-radius: 16px;
+        text-align: center;
+        color: white;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      }
+
+      .time {
+        font-size: clamp(3rem, 12vw, 6rem);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        margin: 0;
+      }
+
+      .label {
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="timer" aria-live="polite">
+      <p class="time" id="timerDisplay">01:00</p>
+      <p class="label">One-minute countdown</p>
+    </main>
+
+    <script>
+      const display = document.getElementById('timerDisplay');
+      let totalSeconds = 60;
+
+      const formatTime = (seconds) => {
+        const minutes = String(Math.floor(seconds / 60)).padStart(2, '0');
+        const remainingSeconds = String(seconds % 60).padStart(2, '0');
+        return `${minutes}:${remainingSeconds}`;
+      };
+
+      display.textContent = formatTime(totalSeconds);
+
+      const intervalId = setInterval(() => {
+        totalSeconds -= 1;
+        display.textContent = formatTime(Math.max(totalSeconds, 0));
+
+        if (totalSeconds <= 0) {
+          clearInterval(intervalId);
+          document.title = 'Time is up!';
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
