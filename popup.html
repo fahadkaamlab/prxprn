@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Free VPN Switch</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="card">
+      <h1>Free VPN Switch</h1>
+      <p class="subtitle">Choose a proxy endpoint</p>
+
+      <label for="server">Server</label>
+      <select id="server"></select>
+
+      <div class="buttons">
+        <button id="connect">Connect</button>
+        <button id="disconnect" class="secondary">Disconnect</button>
+      </div>
+
+      <p id="status" class="status">Disconnected</p>
+      <p class="note">Note: This extension uses proxy routing, not a full-device VPN tunnel.</p>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
