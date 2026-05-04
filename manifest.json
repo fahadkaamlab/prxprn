@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Free VPN Switch",
+  "version": "1.0.0",
+  "description": "A simple Chrome extension to route traffic through a proxy profile.",
+  "permissions": ["storage", "proxy"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_title": "Free VPN Switch",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
